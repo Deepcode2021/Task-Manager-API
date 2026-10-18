@@ -26,4 +26,4 @@ Now what is a path parameters vs query parameters vs request bodies
 |--|--|--|
 | Inside the URL pathAt  | the end of URL after `?` | Separate HTTP payload |
 
-so i am learning the the markdown editing things 
+also i am learning the the markdown editing things 
