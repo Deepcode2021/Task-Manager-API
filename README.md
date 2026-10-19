@@ -38,3 +38,16 @@ some things to be noted
 | Replace full task | PUT | `/tasks/:id` | Full `{ "title": "...", ... }` | 200 OK |
 | Update partial task | PATCH | `/tasks/:id` | Partial `{ "completed": true }` | 200 OK |
 | Delete task | DELETE | `/tasks/:id` | None | 204 No Content |
+
+
+## API endpoints 
+
+
+| Method | Endpoint | Behavior |
+| --- | --- | --- |
+| GET | `/health` | Health response |
+| POST | `/tasks` | Create task |
+| GET | `/tasks` | List tasks |
+| GET | `/tasks/{task_id}` | Retrieve one task |
+| PUT | `/tasks/{task_id}` | Update task |
+| DELETE | `/tasks/{task_id}` | Delete task |
