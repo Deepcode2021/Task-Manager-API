@@ -29,7 +29,6 @@ Now what is a path parameters vs query parameters vs request bodies
 also i am learning the the markdown editing things 
 so did some practice over the json module 
 
-some things to be noted 
 | Action | HTTP Verb | Resource URL | Request Body | Success Status |
 |---|---|---|---|---|
 | Get all tasks | GET | `/tasks` | None | 200 OK |
@@ -37,7 +36,7 @@ some things to be noted
 | Create new task | POST | `/tasks` | `{ "title": "..." }` | 201 Created |
 | Replace full task | PUT | `/tasks/:id` | Full `{ "title": "...", ... }` | 200 OK |
 | Update partial task | PATCH | `/tasks/:id` | Partial `{ "completed": true }` | 200 OK |
-| Delete task | DELETE | `/tasks/:id` | None | 204 No Content |
+| Delete task | DELETE | `/tasks/:id` | None | 204 No Content 
 
 
 ## API endpoints 
@@ -51,3 +50,19 @@ some things to be noted
 | GET | `/tasks/{task_id}` | Retrieve one task |
 | PUT | `/tasks/{task_id}` | Update task |
 | DELETE | `/tasks/{task_id}` | Delete task |
+
+now consider i ID doesn't exits what will i do 
+: maybe throw an **ERROR** saying "ID NOT FOUND"
+everything comes under the edge cases here 
+
+so lets start building the API 
+
+## Installation
+    
+First i need to install the Fast API and Uvicorn 
+    
+Running this command install the Fast api but here i choose the bare pakage as this way i can learn what is this things easily *as per the AI(Gemini)*
+ 
+    ```bash
+    pip install fastapi uvicorn
+    ```
