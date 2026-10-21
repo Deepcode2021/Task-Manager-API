@@ -63,6 +63,6 @@ First i need to install the Fast API and Uvicorn
     
 Running this command install the Fast api but here i choose the bare pakage as this way i can learn what is this things easily *as per the AI(Gemini)*
  
-    ```bash
-    pip install fastapi uvicorn
-    ```
+```bash
+pip  install  fastapi  uvicorn
+```
