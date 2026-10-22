@@ -1,137 +1,83 @@
 
 # Task Manager API
 
-This is a Task Manager API the further extension of the Student Managment CLI
+This is a Task Manager API, a further extension of the [Student Management CLI](https://github.com/Deepcode2021/student-managment-cli).
 
-[Repository](https://github.com/Deepcode2021/student-managment-cli)
+I will be documenting what I am building here based on what I learn and how I create it.
 
-  
-
-#### I will be documenting what i am building here from what i learned and how i created this
-
-  
+---
 
 ## PHASE 0
 
-In this i have learn about some of the basics of what i have to know like
+In this phase, I learned the basics of what I need to know:
 
-  
+### HTTP Methods: GET, POST, PUT, PATCH, DELETE
 
-What is **GET POST PUT PATCH DELETE**
+- **GET:** Retrieve information from the API server.
+- **POST:** Create a new resource on the server.
+- **PUT:** Fully replace an existing resource on the server.
+- **PATCH:** Modify specific fields of an existing resource on the server.
+- **DELETE:** Remove a resource from the server.
 
-  
+---
 
-- GET is a like getting information from the API
+### Status Codes: 200, 201, 204, 400, 404, 500
 
-- POST is to create something in the API server
+These are standardized server responses sent back through the API.
 
-- PUT is used to fully replace something in the server
+---
 
-- PATCH is for modifing specific data in the server
+### Path Parameters vs Query Parameters vs Request Bodies
 
-- DELETE as name suggests to delete a data
+| Path Parameter | Query Parameter | Request Body |
+|---|---|---|
+| Inside the URL path | At the end of URL after `?` | Separate HTTP payload |
 
-so this is about the the methods we can use
+---
 
-### There is status codes like **200 201 204 400 404 500**
-
-this are reponse from the server side through API
-
-  
-
-Now what is a path parameters vs query parameters vs request bodies
-
-  
-
-|Path Parameter| Query Parameter | Request Body |
-
-|--|--|--|
-
-| Inside the URL pathAt | the end of URL after `?`  | Separate HTTP payload |
-
-  
-
-also i am learning the the markdown editing things
-
-so did some practice over the json module
-
-  
+### REST Actions Mapping
 
 | Action | HTTP Verb | Resource URL | Request Body | Success Status |
-
 |---|---|---|---|---|
+| Get all tasks | GET | `/tasks` | None | 200 OK |
+| Get specific task | GET | `/tasks/:id` | None | 200 OK |
+| Create new task | POST | `/tasks` | `{ "title": "..." }` | 201 Created |
+| Replace full task | PUT | `/tasks/:id` | Full `{ "title": "...", ... }` | 200 OK |
+| Update partial task | PATCH | `/tasks/:id` | Partial `{ "completed": true }` | 200 OK |
+| Delete task | DELETE | `/tasks/:id` | None | 204 No Content |
 
-| Get all tasks | GET |  `/tasks`  | None | 200 OK |
+---
 
-| Get specific task | GET |  `/tasks/:id`  | None | 200 OK |
-
-| Create new task | POST |  `/tasks`  |  `{ "title": "..." }`  | 201 Created |
-
-| Replace full task | PUT |  `/tasks/:id`  | Full `{ "title": "...", ... }`  | 200 OK |
-
-| Update partial task | PATCH |  `/tasks/:id`  | Partial `{ "completed": true }`  | 200 OK |
-
-| Delete task | DELETE |  `/tasks/:id`  | None | 204 No Content
-
-  
-  
-
-## API endpoints
-
-  
-  
+## API Endpoints
 
 | Method | Endpoint | Behavior |
+|---|---|---|
+| GET | `/health` | Health response |
+| POST | `/tasks` | Create task |
+| GET | `/tasks` | List tasks |
+| GET | `/tasks/{task_id}` | Retrieve one task |
+| PUT | `/tasks/{task_id}` | Update task |
+| DELETE | `/tasks/{task_id}` | Delete task |
 
-|  ---  |  ---  |  ---  |
+Now, consider what happens if an ID doesn't exist:
+- Throw an **ERROR** with status code `404 Not Found` and message `"Task not found"`.
 
-| GET |  `/health`  | Health response |
+These edge cases need to be handled carefully.
 
-| POST |  `/tasks`  | Create task |
-
-| GET |  `/tasks`  | List tasks |
-
-| GET |  `/tasks/{task_id}`  | Retrieve one task |
-
-| PUT |  `/tasks/{task_id}`  | Update task |
-
-| DELETE |  `/tasks/{task_id}`  | Delete task |
-
-  
-
-now consider i ID doesn't exits what will i do
-
-: maybe throw an **ERROR** saying "ID NOT FOUND"
-
-everything comes under the edge cases here
-
-  
-
-so lets start building the API
-
-  
+---
 
 ## Installation
 
-First i need to install the Fast API and Uvicorn
-
-Running this command install the Fast api but here i choose the bare pakage as this way i can learn what is this things easily *as per the AI(Gemini)*
+First, install FastAPI and Uvicorn. Installing bare packages helps in understanding how each component works individually:
 
 ```bash
-
-pip  install  fastapi  uvicorn
-
+pip install fastapi uvicorn
 ```
-
-To run this main.py by this command 
+To run this main.py by this command
 ```bash
 uvicorn main:app --reload
 ```
-i also learn about the requirements.txt from this u can install the required pakages 
-from below command
-
+i also learn about the requirements.txt from this u can install the required pakages from below command
 ```bash
 pip install -r requirements.txt
 ```
-
-
