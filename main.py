@@ -1,25 +1,13 @@
-import json
-from datetime import datetime
+from fastapi import FastAPI
 
-# id (unique integer), 
-# title (required non-empty string), 
-# description (optional), 
-# completed (boolean default false), 
-# created_at (timestamp).
+app = FastAPI()
 
-data = {
-    "id" : 11,
-    "title" : 'nice',
-    "descrition": 'yooo',
-    "completed": False,
-    "time_at" : str(datetime.now())
-}
-# data = {11,"nice","yoo",True,None}
 
-with open("test.json" , "w")as file:
-    json_data = json.dump(data , file , indent=2)
+@app.get("/")
+def read_root():
+    return {"Hello": "World"}
 
-with open("test.json", "r") as file:
-    load_data = json.load(file)
 
-print(load_data)
+@app.get("/items/{item_id}")
+def read_item(item_id: int, q: str | None = None):
+    return {"item_id": item_id, "q": q}
