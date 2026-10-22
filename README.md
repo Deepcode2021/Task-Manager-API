@@ -81,3 +81,15 @@ i also learn about the requirements.txt from this u can install the required pak
 ```bash
 pip install -r requirements.txt
 ```
+
+### Now starting to build something
+lets start with GET/health
+```python
+@app.get("/health")
+	def  health_check():
+		return  {"Status":  "OK"}
+```
+Running this curl command gives the feedback
+```bash
+curl.exe -X GET http://127.0.0.1:8000/health
+```
