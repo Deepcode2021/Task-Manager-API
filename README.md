@@ -93,3 +93,12 @@ Running this curl command gives the feedback
 ```bash
 curl.exe -X GET http://127.0.0.1:8000/health
 ```
+#### The Decorators
+HTTP Verb: .get, .post, .put, .delete 
+
+URL Path: "/health", "/tasks", "/tasks/{task_id}"
+
+## WHAT is Pydantic ?
+yeah i also don't know but we can learn this is how you procced --
+so as per the doc and "AI" 
+***Pydantic** is a Python library used for **data validation and settings management** using standard Python type hints*
