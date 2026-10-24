@@ -39,3 +39,6 @@ def create_task(task: taskCreate):
     id_counter += 1
     return new_task
 
+@app.post("/task")
+def get_task(task):
+    return task
